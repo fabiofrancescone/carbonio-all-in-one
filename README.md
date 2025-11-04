@@ -58,8 +58,6 @@ To completely remove all Carbonio packages:
 sudo apt purge carbonio-*
 ```
 
----
-
 ## Repository Structure
 
 ```bash
