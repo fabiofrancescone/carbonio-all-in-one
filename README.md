@@ -66,6 +66,7 @@ sudo apt purge carbonio-*
 carbonio-all-in-one/
 ├── carbonio-bundle/
 │   └── DEBIAN/
+|       └── postinst
 │       └── control
 └── README.md
 ```
