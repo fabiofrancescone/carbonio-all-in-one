@@ -56,13 +56,6 @@ To completely remove all Carbonio packages:
 ```bash
 sudo apt purge carbonio-*
 ```
-
-## Repository Structure
-
-```bash
-carbonio-all-in-one/
-├── carbonio-bundle/
-│   └── DEBIAN/
 |       └── postinst
 │       └── control
 └── README.md
