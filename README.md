@@ -56,7 +56,3 @@ To completely remove all Carbonio packages:
 ```bash
 sudo apt purge carbonio-*
 ```
-|       └── postinst
-│       └── control
-└── README.md
-```
