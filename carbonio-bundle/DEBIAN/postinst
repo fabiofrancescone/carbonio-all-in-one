@@ -27,10 +27,7 @@ CONSUL_SECRET="$(openssl rand -base64 14 | tr -dc '[:alnum:]')"
 POSTGRES_SECRET="$(openssl rand -base64 14 | tr -dc '[:alnum:]')"
 
 echo "Waiting for Consul cluster leader..."
-until consul info 2>/dev/null | grep -q 'leader = true'; do
-  sleep 3
-done
-echo "Consul leader is active."
+  sleep 15
 
 echo "Configuring service-discover..."
 service-discover setup "$IP" --password="$CONSUL_SECRET"
