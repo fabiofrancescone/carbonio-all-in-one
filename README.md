@@ -50,6 +50,21 @@ apt update
 apt install ./carbonio-bundle.deb
 ```
 
+## Default Domain Configuration
+
+During installation, **Carbonio will automatically set the default domain** based on the server’s **fully qualified domain name (FQDN)**.
+
+For example:  
+If your server hostname is:
+```bash
+srv-01.example.com
+```
+then the default Carbonio domain will be automatically configured as:
+```bash
+example.com
+```
+
+
 ##  Unistallation
 
 ```bash
