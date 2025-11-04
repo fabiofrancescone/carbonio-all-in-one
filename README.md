@@ -12,13 +12,13 @@ The `carbonio-bundle` package simplifies the installation process of Carbonio CE
 
 > Before installing this package, make sure the following conditions are met:
 >
-> 1️ **PostgreSQL 16** must be installed on the server.  
+>    **PostgreSQL 16** must be installed on the server.  
 >    Ensure that the PostgreSQL repository is correctly configured, then install it with:
 >    ```bash
 >    sudo apt install postgresql-16
 >    ```
 >
-> 2️ The **Carbonio repository** must be added to your APT sources list, along with its **corresponding GPG key**.  
+>    The **Carbonio repository** must be added to your APT sources list, along with its **corresponding GPG key**.  
 >    Make sure that repository configuration and key import are completed successfully before proceeding with the installation.
 
 
