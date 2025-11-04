@@ -54,7 +54,6 @@ PGPASSWORD=$POSTGRES_SECRET carbonio-mailbox-db-bootstrap carbonio_adm 127.0.0.1
 PGPASSWORD=$POSTGRES_SECRET carbonio-docs-connector-db-bootstrap carbonio_adm 127.0.0.1
 PGPASSWORD=$POSTGRES_SECRET carbonio-tasks-db-bootstrap carbonio_adm 127.0.0.1
 PGPASSWORD=$POSTGRES_SECRET carbonio-ws-collaboration-db-bootstrap carbonio_adm 127.0.0.1
-pending-setups --execute-all
 PGPASSWORD=$POSTGRES_SECRET carbonio-message-dispatcher-db-bootstrap carbonio_adm 127.0.0.1
 PGPASSWORD=$POSTGRES_SECRET carbonio-message-dispatcher-migration carbonio_adm 127.0.0.1
 
