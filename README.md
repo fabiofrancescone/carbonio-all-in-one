@@ -2,14 +2,10 @@
 
 The **Carbonio All-in-One** repository provides a lightweight Debian meta-package designed to install the complete **Zextras Carbonio Community Edition (CE)** stack on an Ubuntu server with a single command.
 
----
-
 ##  Overview
 
 The `carbonio-bundle` package simplifies the installation process of Carbonio CE by automatically pulling and installing all required components and dependencies from the configured APT repositories.
 
-
----
 
 ##  IMPORTANT PREREQUISITE
 
@@ -18,8 +14,6 @@ The `carbonio-bundle` package simplifies the installation process of Carbonio CE
 > ```bash
 > sudo apt install postgresql-16
 > ```
-
----
 
 ##  Building the Package
 
@@ -43,8 +37,6 @@ carbonio-bundle.deb
 sudo apt update
 sudo apt install ./carbonio-bundle.deb
 ```
-
----
 
 ##  Unistallation
 
