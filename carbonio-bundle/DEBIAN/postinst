@@ -1,0 +1,68 @@
+#!/bin/bash
+set -e
+
+echo "=== Starting Carbonio All-in-One post-installation setup ==="
+
+# Load OS information
+source /etc/os-release
+
+# Collect system information
+HOST=$(hostname -f)
+DOMAIN=$(hostname -d)
+IP=$(hostname -i)
+
+echo "Detected Host: $HOST"
+echo "Detected Domain: $DOMAIN"
+echo "Detected IP: $IP"
+
+# Create empty config file for bootstrap
+CONFIG_FILE="/root/config.conf"
+echo "" > "$CONFIG_FILE"
+
+echo "Running carbonio-bootstrap..."
+carbonio-bootstrap -c "$CONFIG_FILE"
+
+# Generate secrets
+CONSUL_SECRET="$(openssl rand -base64 14 | tr -dc '[:alnum:]')"
+POSTGRES_SECRET="$(openssl rand -base64 14 | tr -dc '[:alnum:]')"
+
+echo "Configuring service-discover..."
+service-discover setup "$IP" --password="$CONSUL_SECRET"
+
+# Extract Consul token
+export CONSUL_HTTP_TOKEN=$(echo "$CONSUL_SECRET" | \
+  gpg --batch --yes --passphrase-fd 0 -qdo - /etc/zextras/service-discover/cluster-credentials.tar.gpg | \
+  tar xOf - consul-acl-secret.json | jq .SecretID -r)
+
+export SETUP_CONSUL_TOKEN="$CONSUL_HTTP_TOKEN"
+
+echo "Executing pending setups..."
+pending-setups --execute-all
+
+# Setup PostgreSQL user and DB
+echo "Configuring PostgreSQL roles and databases..."
+su - postgres -c "psql --command=\"CREATE ROLE carbonio_adm WITH LOGIN SUPERUSER ENCRYPTED PASSWORD '$POSTGRES_SECRET';\""
+su - postgres -c "psql --command=\"CREATE DATABASE carbonio_adm OWNER carbonio_adm;\""
+
+# Initialize Carbonio databases
+echo "Initializing Carbonio databases..."
+PGPASSWORD=$POSTGRES_SECRET carbonio-files-db-bootstrap carbonio_adm 127.0.0.1
+PGPASSWORD=$POSTGRES_SECRET carbonio-mailbox-db-bootstrap carbonio_adm 127.0.0.1
+PGPASSWORD=$POSTGRES_SECRET carbonio-docs-connector-db-bootstrap carbonio_adm 127.0.0.1
+PGPASSWORD=$POSTGRES_SECRET carbonio-tasks-db-bootstrap carbonio_adm 127.0.0.1
+PGPASSWORD=$POSTGRES_SECRET carbonio-ws-collaboration-db-bootstrap carbonio_adm 127.0.0.1
+PGPASSWORD=$POSTGRES_SECRET carbonio-message-dispatcher-db-bootstrap carbonio_adm 127.0.0.1
+PGPASSWORD=$POSTGRES_SECRET carbonio-message-dispatcher-migration carbonio_adm 127.0.0.1
+
+# Final setup execution
+pending-setups --execute-all
+
+# Display PostgreSQL admin credentials
+echo -e "\n========================================"
+echo -e " Carbonio All-in-One setup completed!"
+echo -e "The PostgreSQL password (DB_ADM_PWD) is: \e[1m$POSTGRES_SECRET\e[0m"
+echo -e "Please store it in a safe place, otherwise you will need to reset it."
+echo -e "========================================\n"
+
+exit 0
+

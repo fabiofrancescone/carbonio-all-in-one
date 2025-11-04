@@ -1,0 +1,39 @@
+Package: carbonio-bundle
+Version: 1.0
+Section: metapackages
+Priority: optional
+Architecture: all
+Maintainer: Fabio <https://github.com/fabiofrancescone>
+Depends: service-discover-server,
+ carbonio-directory-server,
+ carbonio-proxy,
+ carbonio-webui,
+ carbonio-files-ui,
+ carbonio-mta,
+ carbonio-mailbox-db,
+ carbonio-appserver,
+ carbonio-user-management,
+ carbonio-files-ce,
+ carbonio-files-public-folder-ui,
+ carbonio-files-db,
+ carbonio-tasks-ce,
+ carbonio-tasks-db,
+ carbonio-tasks-ui,
+ carbonio-storages-ce,
+ carbonio-preview-ce,
+ carbonio-docs-connector-ce,
+ carbonio-docs-connector-db,
+ carbonio-docs-editor,
+ carbonio-prometheus,
+ carbonio-message-broker,
+ carbonio-message-dispatcher-ce,
+ carbonio-message-dispatcher-db,
+ carbonio-ws-collaboration-ce,
+ carbonio-ws-collaboration-db,
+ carbonio-ws-collaboration-ui,
+ carbonio-videoserver-ce,
+ carbonio-catalog
+Description: Meta-package to install the complete Carbonio CE stack
+ This package installs the full Carbonio Community Edition environment,
+ including all main services, user interfaces, and backend components.
+
