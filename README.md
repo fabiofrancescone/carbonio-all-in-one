@@ -41,18 +41,23 @@ This will create a .deb file in the current directory:
 carbonio-bundle.deb
 
 ```bash
-sudo apt update
-sudo apt install ./carbonio-bundle.deb
+apt update
+```
+
+##  Install Carbonio
+
+```bash
+apt install ./carbonio-bundle.deb
 ```
 
 ##  Unistallation
 
 ```bash
-sudo apt remove carbonio-bundle
+apt remove carbonio-bundle
 ```
 
 To completely remove all Carbonio packages:
 
 ```bash
-sudo apt purge carbonio-*
+apt purge carbonio-*
 ```
