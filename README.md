@@ -26,35 +26,46 @@ The `carbonio-bundle` package simplifies the installation process of Carbonio CE
 You can build the meta-package locally with standard Debian packaging tools.
 
 ###  Clone the repository
+```bash
 git clone https://github.com/<your-org>/carbonio-all-in-one.git
 cd carbonio-all-in-one
+```
 
+###  Build the package
+```bash
 dpkg-deb --build carbonio-bundle
+```
 
 This will create a .deb file in the current directory:
 carbonio-bundle.deb
 
+```bash
 sudo apt update
 sudo apt install ./carbonio-bundle.deb
+```
 
 ---
 
 ##  Unistallation
 
+```bash
 sudo apt remove carbonio-bundle
+```
 
 To completely remove all Carbonio packages:
 
+```bash
 sudo apt purge carbonio-*
+```
 
 ---
 
 ## Repository Structure
 
+```bash
 carbonio-all-in-one/
 ├── carbonio-bundle/
 │   └── DEBIAN/
 │       └── control
 └── README.md
-
-
+```
