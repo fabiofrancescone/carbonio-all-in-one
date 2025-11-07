@@ -26,9 +26,16 @@ The `carbonio-bundle` package simplifies the installation process of Carbonio CE
 
 You can build the meta-package locally with standard Debian packaging tools.
 
-###  Clone the repository
+### Fork the repository
+
+Before cloning, **create your own fork** of the official GitHub repository to ensure you can manage updates, make changes, or contribute back if needed.
+
+1. Go to the official repository page on GitHub.  
+2. Click **“Fork”** to create your personal copy under your own account or organization.  
+3. Then, clone **your forked repository** on the server:
+
 ```bash
-git clone https://github.com/<your-org>/carbonio-all-in-one.git
+git clone https://github.com/<your-username>/carbonio-all-in-one.git
 cd carbonio-all-in-one
 ```
 
